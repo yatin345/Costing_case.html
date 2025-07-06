@@ -5,77 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI-Powered Portfolio | LALAJI KHAKHRA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #fdfdfd;
-      color: #2d3436;
-      line-height: 1.6;
-      padding: 40px 20px;
-    }
 
-    .container {
-      max-width: 880px;
-      margin: 0 auto;
-    }
 
-    h1 {
-      font-size: 32px;
-      color: #2e86de;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      margin-top: 50px;
-      color: #333;
-      font-size: 22px;
-    }
-
-    p {
-      margin: 16px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .highlight {
-      background: #f0f4ff;
-      padding: 20px;
-      border-left: 4px solid #2e86de;
-      border-radius: 6px;
-      margin: 24px 0;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .tag {
-      background: #e1ecf4;
-      color: #0366d6;
-      padding: 6px 12px;
-      font-size: 14px;
-      border-radius: 20px;
-    }
-
-    .link {
-      color: #2e86de;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      margin-top: 60px;
-      color: #999;
-    }
-  </style>
+    
 </head>
 <body>
 
