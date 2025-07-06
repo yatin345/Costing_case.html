@@ -36,7 +36,7 @@
   </div>
 
   <h2>🌐 Live Preview</h2>
-  <p><a href="https://yatin345.github.io/khakhra-costing/" class="link" target="_blank">View the live project here</a></p>
+  <p><a href="https://yatin345.github.io/Costing_case.html/khakhra_costing.html" class="link" target="_blank">View the live project here</a></p>
 
   <h2>📌 Why It Matters</h2>
   <p>This project shows how I can leverage AI to solve unfamiliar technical challenges without traditional training. It represents the way I think, build, and deliver—using intelligence, not just code.</p>
