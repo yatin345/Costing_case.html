@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LALAJI KHAKHRA</title>
+
+
+
+ <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f3ecf8, #e8f0fc);
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #6a1b9a;
+      margin-bottom: 2rem;
+      font-size: 28px;
+    }
+
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #6a1b9a;
+      color: #ffffff;
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+    td {
+      font-size: 15px;
+      color: #333;
+    }
+
+    tfoot td {
+      background-color: #fff3cd;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9f9f9;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+  
+
+
+
+
+
+
+</head>
+<body>
+
+  <div class="container">
+    <h2>LALAJI KHAKHRA</h2>
+
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>Item</th>
+        <th>Price (₹)</th>
+        <th>Multiplier</th>
+        <th>Total (₹)</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Flour</td>
+        <td><input type="number" id="price1" oninput="calculateResult(1)"></td>
+        <td>5.5</td>
+        <td id="total1">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Oil</td>
+        <td><input type="number" id="price2" oninput="calculateResult(2)"></td>
+        <td>62.5</td>
+        <td id="total2">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Gas</td>
+        <td><input type="number" id="price3" oninput="calculateResult(3)"></td>
+        <td>85</td>
+        <td id="total3">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Fried</td>
+        <td><input type="number" id="price4" oninput="calculateResult(4)"></td>
+        <td></td>
+        <td id="total4">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Baked</td>
+        <td><input type="number" id="price5" oninput="calculateResult(5)"></td>
+        <td></td>
+        <td id="total5">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Labor(5+6)</td>
+        <td></td>
+        <td>1.6667</td>
+        <td id="total6">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>PP Bag</td>
+        <td><input type="number" id="price7" oninput="calculateResult(7)"></td>
+        <td></td>
+        <td id="total7">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Other</td>
+        <td><input type="number" id="price8" oninput="calculateResult(8)"></td>
+        <td></td>
+        <td id="total8">₹ 0.00</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align: center; font-weight: bold; font-size: 22px;" class="blue-text">Total Costing (Per KG)</td>
+        <td id="total9" style="font-weight: bold; font-size: 22px;" class="blue-text">₹ 0.00</td>
+      </tr>
+    </table>
+  </div>
+
+<script>
+function calculateResult(row) {
+  var price = parseFloat(document.getElementById('price' + row)?.value) || 0;
+  var total = 0;
+
+  // Special case for Labor (Row 6)
+  var price4 = parseFloat(document.getElementById('price4')?.value) || 0;
+  var price5 = parseFloat(document.getElementById('price5')?.value) || 0;
+  var totalLabor = (price4 + price5) / 1.6667;
+  document.getElementById('total6').innerHTML = '₹ ' + totalLabor.toFixed(2);
+
+  if (row === 7) {
+    total = (price * 5) / 160;
+  } else if (row === 8) {
+    total = price;
+  } else if ([1, 2, 3].includes(row)) {
+    var variableCell = document.getElementsByTagName('td')[row * 5 - 2];
+    var variable = parseFloat(variableCell?.innerText) || 1;
+    total = price / variable;
+  } else if (row === 4 || row === 5) {
+    total = price;
+  }
+
+  if (row !== 6) {
+    document.getElementById('total' + row).innerHTML = '₹ ' + total.toFixed(2);
+  }
+
+  // Recalculate Grand Total
+  var sum = 0;
+  for (var i = 1; i <= 8; i++) {
+    var temp = parseFloat(document.getElementById('total' + i)?.innerText.replace('₹ ', '')) || 0;
+    sum += temp;
+  }
+  sum += totalLabor;
+  document.getElementById('total9').innerHTML = '₹ ' + sum.toFixed(2);
+}
+</script>
+
+</body>
+</html>
